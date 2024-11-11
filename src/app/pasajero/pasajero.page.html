@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>TeLLevoApp - Pasajero</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()">CERRAR SESIÓN</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="welcome-banner">
+    <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+  </div>
+
+  <!-- Lista de viajes disponibles -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Viajes Disponibles</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let viaje of viajes">
+          <ion-label>
+            <h2>{{ viaje.destino }}</h2>
+            <p>Fecha: {{ viaje.fecha | date:'dd/MM/yyyy' }} - Hora: {{ viaje.hora_salida }}</p>
+            <p>Costo: ${{ viaje.costo }} - Asientos: {{ viaje.asientos_disponibles }}</p>
+          </ion-label>
+          <ion-button slot="end" (click)="reservarViaje(viaje.id)">Reservar</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Objetivos de TeLlevoApp</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="time-outline" slot="start"></ion-icon>
+          <ion-label>Reducir tiempos de búsqueda de movilización</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-label>Fomentar el compañerismo</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          <ion-label>Incentivar la asistencia presencial</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="leaf-outline" slot="start"></ion-icon>
+          <ion-label>Reducir la huella de carbono</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

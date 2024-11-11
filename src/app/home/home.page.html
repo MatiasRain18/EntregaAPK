@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>TeLLevoApp</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarSesion()">CERRAR SESIÓN</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="welcome-banner">
+    <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>¿Qué deseas hacer?</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" color="success" (click)="mostrarProgramarViaje()">
+        <ion-icon name="car-outline" slot="start"></ion-icon>
+        PROGRAMAR UN VIAJE
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="mostrarFormularioProgramarViaje">
+    <ion-card-header>
+      <ion-card-title>Programar un Viaje</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="programarViaje()">
+        <ion-item>
+          <ion-label position="floating">Destino</ion-label>
+          <ion-input [(ngModel)]="nuevoViaje.destino" name="destino" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Costo por persona</ion-label>
+          <ion-input type="number" [(ngModel)]="nuevoViaje.costo" name="costo" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Asientos disponibles</ion-label>
+          <ion-input type="number" [(ngModel)]="nuevoViaje.asientos_disponibles" name="asientos_disponibles" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Hora de salida</ion-label>
+          <ion-datetime displayFormat="HH:mm" [(ngModel)]="nuevoViaje.hora_salida" name="hora_salida" required></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Fecha</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="nuevoViaje.fecha" name="fecha" required></ion-datetime>
+        </ion-item>
+        <ion-button expand="block" type="submit">Crear Viaje</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Objetivos de TeLlevoApp</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="time-outline" slot="start"></ion-icon>
+          <ion-label>Reducir tiempos de búsqueda de movilización</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-label>Fomentar el compañerismo</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="school-outline" slot="start"></ion-icon>
+          <ion-label>Incentivar la asistencia presencial</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="leaf-outline" slot="start"></ion-icon>
+          <ion-label>Reducir la huella de carbono</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
